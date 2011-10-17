@@ -44,7 +44,7 @@ namespace MVPHostsUpdater
             }
         }
 
-        private static string GetPathOfHostsFile()
+        public static string GetPathOfHostsFile()
         {
             if (string.IsNullOrEmpty(_hostsFilePath))
             {

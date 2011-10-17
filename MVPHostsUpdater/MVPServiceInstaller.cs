@@ -36,6 +36,15 @@ namespace MVPHostsUpdater
                 inst.Rollback(state);
             }
         }
+
+        protected override void OnCommitted(IDictionary savedState)
+        {
+            base.OnCommitted(savedState);
+
+            // Auto Start the Service Once Installation is Finished.
+            var controller = new ServiceController(this.ServiceName);
+            controller.Start();
+        }
     }
 
     [RunInstaller(true)]

@@ -71,6 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomInstaller.Designer.cs">
+      <DependentUpon>CustomInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="MvpHelper.cs" />
     <Compile Include="MVPServiceInstaller.cs">
       <SubType>Component</SubType>
