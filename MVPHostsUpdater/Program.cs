@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.ServiceProcess;
 using System.Text;
 
@@ -24,13 +26,13 @@ namespace MVPHostsUpdater
                         installer.RemoveService();
                         break;
                     default:
-                        ShowUsageMessage();
+                        RunService();
                         break;
                 }
             }
             else
             {
-                ShowUsageMessage();
+                RunService();
             }
             
         }
@@ -41,19 +43,13 @@ namespace MVPHostsUpdater
         protected override void OnStart(string[] args)
         {
             base.OnStart(args);
+            MvpHelper.UpdateMvpHostsFile();
         }
 
-        /// <SUMMARY>
-        /// Stop this service.
-        /// </SUMMARY>
-        protected override void OnStop()
+        private static void RunService()
         {
-            base.OnStop();
-        }
-
-        private static void ShowUsageMessage()
-        {
-            
+            ServiceBase[] services = { new Program() };
+            ServiceBase.Run(services);
         }
     }
 }
