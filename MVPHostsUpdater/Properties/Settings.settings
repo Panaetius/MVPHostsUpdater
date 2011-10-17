@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MVPHostsUpdater.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MvpUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://winhelp2002.mvps.org/hosts.txt</Value>
+    </Setting>
+    <Setting Name="HostsRegistryPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</Value>
+    </Setting>
+    <Setting Name="HostsRegistryKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DataBasePath</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

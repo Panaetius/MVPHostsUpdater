@@ -5,6 +5,8 @@ using System.Net;
 
 using Microsoft.Win32;
 
+using MVPHostsUpdater.Properties;
+
 namespace MVPHostsUpdater
 {
     public static class MvpHelper
@@ -14,7 +16,7 @@ namespace MVPHostsUpdater
         private static string FetchMvpFile()
         {
             string result = string.Empty;
-            WebRequest request = WebRequest.Create("http://winhelp2002.mvps.org/hosts.txt");
+            WebRequest request = WebRequest.Create(Settings.Default.MvpUrl);
             WebResponse response = request.GetResponse();
             using (Stream stream = response.GetResponseStream())
             {
@@ -46,14 +48,14 @@ namespace MVPHostsUpdater
         {
             if (string.IsNullOrEmpty(_hostsFilePath))
             {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters");
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(Settings.Default.HostsRegistryPath);
 
                 if (rk == null)
                 {
-                    throw new KeyNotFoundException(@"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters");
+                    throw new KeyNotFoundException(Settings.Default.HostsRegistryPath);
                 }
 
-                _hostsFilePath = rk.GetValue("DataBasePath".ToUpper()) + "\\hosts";
+                _hostsFilePath = rk.GetValue(Settings.Default.HostsRegistryKey.ToUpper()) + "\\hosts";
             }
             return _hostsFilePath;
         }
