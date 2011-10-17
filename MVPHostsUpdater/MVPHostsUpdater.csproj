@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MvpHelper.cs" />
     <Compile Include="MVPServiceInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
