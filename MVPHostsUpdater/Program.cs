@@ -10,17 +10,18 @@ namespace MVPHostsUpdater
     {
         static void Main(string[] args)
         {
+            var installer = new MvpServiceInstaller();
             if (args.Count() > 0)
             {
                 switch (args[0])
                 {
                     case "-i":
                     case "-install":
-                        InstallService();
+                        installer.InstallService();
                         break;
                     case "-r":
                     case "-remove":
-                        RemoveService();
+                        installer.RemoveService();
                         break;
                     default:
                         ShowUsageMessage();
@@ -49,6 +50,11 @@ namespace MVPHostsUpdater
         {
             // TODO: Add code here to perform any tear-down
             // necessary to stop your service.
+        }
+
+        private static void ShowUsageMessage()
+        {
+            
         }
     }
 }
