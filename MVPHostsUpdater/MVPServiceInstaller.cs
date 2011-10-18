@@ -14,6 +14,7 @@ namespace MVPHostsUpdater
             this.Description = "Automagically updates the hosts file with the entries from MVPS";
             this.DisplayName = "MVPS hosts Updater";
             this.StartType = ServiceStartMode.Automatic;
+            this.DelayedAutoStart = true;
             this.BeforeUninstall += this.MvpServiceInstaller_BeforeUninstall;
 
             this.Installers.Add(new MyServiceInstallerProcess());
