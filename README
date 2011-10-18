@@ -1,5 +1,9 @@
 Automatically updates your hosts file using the MVPS hosts file (http://winhelp2002.mvps.org/hosts.htm) at system startup.
 
+Entries that aren't in the MVPS file are left untouched and added to the beginning of the hosts file in a custom entries section.
+
+Project also includes an installer project that creates a backup of the original hosts file and restores it upon deinstallation (well sort of, still figuring out the details uf uninstalling)
+
 Needs administrator privileges to run.
 
 Cheers
