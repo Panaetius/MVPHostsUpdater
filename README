@@ -6,6 +6,8 @@ Project also includes an installer project that creates a backup of the original
 
 Needs administrator privileges to run.
 
+If you want another hosts file, you can update the url in the *.config file in the installation directory.
+
 Cheers
 
 P.s. you might need to change some settings in your antivirus to make this work
