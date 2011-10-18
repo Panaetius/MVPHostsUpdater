@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.ServiceProcess;
-using System.Text;
+﻿using System.ServiceProcess;
 
 namespace MVPHostsUpdater
 {
@@ -12,29 +6,7 @@ namespace MVPHostsUpdater
     {
         static void Main(string[] args)
         {
-            var installer = new MvpServiceInstaller();
-            if (args.Count() > 0)
-            {
-                switch (args[0])
-                {
-                    case "-i":
-                    case "-install":
-                        installer.InstallService();
-                        break;
-                    case "-r":
-                    case "-remove":
-                        installer.RemoveService();
-                        break;
-                    default:
-                        RunService();
-                        break;
-                }
-            }
-            else
-            {
                 RunService();
-            }
-            
         }
 
         /// <SUMMARY>
@@ -44,6 +16,7 @@ namespace MVPHostsUpdater
         {
             base.OnStart(args);
             MvpHelper.UpdateMvpHostsFile();
+            this.Stop();
         }
 
         private static void RunService()

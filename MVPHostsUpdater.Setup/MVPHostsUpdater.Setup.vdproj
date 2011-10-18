@@ -43,6 +43,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,12 +80,61 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_1D72557FC4E548DEB780B50C402A4535"
+            {
+            "Name" = "8:Primary output from MVPHostsUpdater (Active)"
+            "Condition" = "8:true"
+            "Object" = "8:_81CDC86CAB14477591B6AD2DE350B36C"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_7575C903_89CA_421C_BD31_B4ADCDE59574"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/targetdir='[TARGETDIR]'"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_44D2CCC9A23144A6975AEFA16DFC718F"
+            {
+            "Name" = "8:Primary output from MVPHostsUpdater (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_81CDC86CAB14477591B6AD2DE350B36C"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_2517D00C_ABDB_4BFF_B882_384247A960EA"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_8754FAC73FC64751812DB849F7EB92C7"
             {
             "Name" = "8:Primary output from MVPHostsUpdater (Active)"
@@ -172,21 +242,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MVPHostsUpdater"
-        "ProductCode" = "8:{5D4189D0-46FC-4043-ABF8-98C8A3D00246}"
-        "PackageCode" = "8:{5F41A2DF-9EA9-413B-800D-35492038BE51}"
+        "ProductCode" = "8:{BEFAD671-22BF-43D0-B58F-0D0596C012C4}"
+        "PackageCode" = "8:{B7E470A6-495F-43E2-B80C-FC79A18D2BDC}"
         "UpgradeCode" = "8:{EEC0D4A0-F2E6-4690-AA6E-15911D029152}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Microsoft"
+        "ProductVersion" = "8:1.0.2"
+        "Manufacturer" = "8:MVPSHostsUpdater"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:MVPHostsUpdater.Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Microsoft"
+        "ARPCONTACT" = "8:MVPSHostsUpdater"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -694,7 +764,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81CDC86CAB14477591B6AD2DE350B36C"
             {
-            "SourcePath" = "8:..\\MVPHostsUpdater\\obj\\x86\\Debug\\MVPHostsUpdater.exe"
+            "SourcePath" = "8:..\\MVPHostsUpdater\\obj\\x86\\Release\\MVPHostsUpdater.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0BC8803468D4F05B3FA533B079B317F"

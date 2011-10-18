@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration.Install;
 using System.IO;
-using System.Linq;
 
 using MVPHostsUpdater;
 
@@ -21,7 +18,12 @@ namespace InstallerCustomAction
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
         public override void Install(IDictionary stateSaver)
         {
-            File.Copy(MvpHelper.GetPathOfHostsFile(), MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup");
+            try
+            {
+                File.Copy(MvpHelper.GetPathOfHostsFile(), MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup");
+            }
+            catch (Exception) { }
+
             base.Install(stateSaver);
         }
 
@@ -35,7 +37,7 @@ namespace InstallerCustomAction
         public override void Rollback(IDictionary savedState)
         {
             base.Rollback(savedState);
-            File.Copy(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup", MvpHelper.GetPathOfHostsFile());
+            File.Copy(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup", MvpHelper.GetPathOfHostsFile(), true);
             File.Delete(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup");
         }
 
@@ -43,7 +45,7 @@ namespace InstallerCustomAction
         public override void Uninstall(IDictionary savedState)
         {
             base.Uninstall(savedState);
-            File.Copy(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup", MvpHelper.GetPathOfHostsFile());
+            File.Copy(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup", MvpHelper.GetPathOfHostsFile(), true);
             File.Delete(MvpHelper.GetPathOfHostsFile() + "_MVPHostsUpdaterBackup");
         }
     }

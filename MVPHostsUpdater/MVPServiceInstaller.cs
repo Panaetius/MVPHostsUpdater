@@ -1,7 +1,6 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Configuration.Install;
-using System.Security.Permissions;
 using System.ServiceProcess;
 
 namespace MVPHostsUpdater
@@ -15,35 +14,32 @@ namespace MVPHostsUpdater
             this.Description = "Automagically updates the hosts file with the entries from MVPS";
             this.DisplayName = "MVPS hosts Updater";
             this.StartType = ServiceStartMode.Automatic;
+            this.BeforeUninstall += this.MvpServiceInstaller_BeforeUninstall;
+
+            this.Installers.Add(new MyServiceInstallerProcess());
         }
 
-        internal void InstallService()
+        public override void Install(IDictionary stateSaver)
         {
-            // Instantiate installers for process and services.
-            using (AssemblyInstaller inst = new AssemblyInstaller(typeof(Program).Assembly, null))
-            {
-                IDictionary state = new Hashtable();
-                inst.Install(state);
-                inst.Commit(state);
-            }
+            this.AfterInstall += this.MvpServiceInstaller_AfterInstall;
+            base.Install(stateSaver);
         }
 
-        internal void RemoveService()
+        protected void MvpServiceInstaller_AfterInstall(object obj, InstallEventArgs args)
         {
-            using (AssemblyInstaller inst = new AssemblyInstaller(typeof(Program).Assembly, null))
-            {
-                IDictionary state = new Hashtable();
-                inst.Rollback(state);
-            }
-        }
-
-        protected override void OnCommitted(IDictionary savedState)
-        {
-            base.OnCommitted(savedState);
-
             // Auto Start the Service Once Installation is Finished.
             var controller = new ServiceController(this.ServiceName);
             controller.Start();
+        }
+
+        void MvpServiceInstaller_BeforeUninstall(object sender, InstallEventArgs e)
+        {
+            var controller = new ServiceController(this.ServiceName);
+            if (controller.Status == ServiceControllerStatus.Running)
+            {
+                controller.Stop();
+                controller.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
         }
     }
 
