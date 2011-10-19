@@ -100,7 +100,8 @@ namespace MVPHostsUpdater
             result += @"
 
 # MVPS Hosts entries
-# ------------------------------------";
+# ------------------------------------
+";
 
             result += string.Join("\r\n", mvpHostsFile);
 
